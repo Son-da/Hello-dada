@@ -2,8 +2,6 @@
 
 ```javascript
 
-// array를 1이상 100이하 선언
-const array = Array(100).fill(undefined).map((v,i) => i+1);
 // i, j, k 임의 추출
 // i~j 슬라이스
 // 슬라이스 한값 오른차순 정렬
@@ -13,12 +11,21 @@ const array = Array(100).fill(undefined).map((v,i) => i+1);
 
 // commands 안에 253을 어떻게 찝을지(3번돌리기 위해 for문(length 50)), 슬라이스 > 정렬> k만큼
 
-const commands = Array(50).fill(undefined).map((v,i) => i+1);
 
 
 function solution(array, commands) {
-    var answer = [];
+    const answer = [];
+    for (let i =0; i<commands.length; i++){
+        let arr= array.slice(commands[i][0]-1 , commands[i][1])
+        arr.sort(function( a,b){
+            return a-b;
+        } );
+        answer.push(arr[commands[i][2] -1]);
+    }
+        
+    
     return answer;
 }
+
 
 ```
